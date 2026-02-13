@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-tracer"
+version = "0.1.0"
+description = "Universal tracing library for ANY AI agent system"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "Agent Tracer Team"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    "psycopg2-binary>=2.9.9",
+    "pydantic>=2.0.0",
+    "python-dateutil>=2.8.0",
+]
+
+[tool.setuptools]
+packages = ["agent_tracer", "agent_tracer.core", "agent_tracer.storage"]
+package-dir = {"agent_tracer" = "."}
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "rich>=13.7.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+
+[tool.coverage.run]
+source = ["agent_tracer"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

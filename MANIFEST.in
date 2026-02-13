@@ -1,0 +1,6 @@
+include README.md
+include LICENSE
+recursive-include agent_tracer *.py
+recursive-include agent_tracer *.sql
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

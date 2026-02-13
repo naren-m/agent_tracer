@@ -1,0 +1,43 @@
+"""Setup configuration for Agent Tracer."""
+
+from setuptools import setup, find_packages
+from pathlib import Path
+
+# Read README - use package README if it exists, otherwise use short description
+readme_file = Path(__file__).parent / "README.md"
+if not readme_file.exists():
+    # Try parent directory as fallback
+    readme_file = Path(__file__).parent.parent / "README.md"
+long_description = readme_file.read_text(encoding="utf-8") if readme_file.exists() else "Universal tracing library for ANY AI agent system"
+
+setup(
+    name="agent-tracer",
+    version="0.1.0",
+    author="Agent Tracer Team",
+    description="Universal tracing library for ANY AI agent system",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    packages=find_packages(exclude=["tests", "tests.*"]),
+    python_requires=">=3.11",
+    install_requires=[
+        "psycopg2-binary>=2.9.9",
+        "pydantic>=2.0.0",
+        "python-dateutil>=2.8.0",
+    ],
+    extras_require={
+        "dev": [
+            "pytest>=7.0.0",
+            "rich>=13.7.0",
+        ],
+    },
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+    ],
+)
