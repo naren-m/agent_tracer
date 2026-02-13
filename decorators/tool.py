@@ -1,7 +1,7 @@
 """Decorator for tracing tool executions."""
 
 import functools
-from agent_tracer import TraceClient
+from agent_tracer.core.trace_client import TraceClient
 
 
 def traced_tool(trace_client: TraceClient):

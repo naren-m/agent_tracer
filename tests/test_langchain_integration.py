@@ -2,9 +2,9 @@
 
 import pytest
 from unittest.mock import MagicMock, patch
-from integrations.langchain import ComprehensiveTracingCallback
-from models.decision_models import AgentDecision
-from context.context_propagation import get_current_trace_id, get_span_stack
+from agent_tracer.integrations.langchain import ComprehensiveTracingCallback
+from agent_tracer.models import AgentDecision
+from agent_tracer.context import get_current_trace_id, get_span_stack
 
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def callback():
 @pytest.fixture
 def mock_trace_context():
     """Mock trace context setup."""
-    with patch("integrations.langchain.set_current_trace_id") as mock_set_trace:
+    with patch("agent_tracer.integrations.langchain.set_current_trace_id") as mock_set_trace:
         yield {
             "set_trace": mock_set_trace,
         }
@@ -152,7 +152,7 @@ def test_callback_manages_span_stack(callback, mock_trace_context):
 
 def test_parse_decision_from_text():
     """Test decision parsing logic."""
-    from integrations.langchain import _parse_decision_from_text
+    from agent_tracer.integrations.langchain import _parse_decision_from_text
 
     text = "I will approve the deployment because all tests passed. I'm very confident in this decision."
     decision = _parse_decision_from_text(text)
@@ -165,7 +165,7 @@ def test_parse_decision_from_text():
 
 def test_parse_decision_handles_low_confidence():
     """Test parsing of uncertain decisions."""
-    from integrations.langchain import _parse_decision_from_text
+    from agent_tracer.integrations.langchain import _parse_decision_from_text
 
     text = "I might consider rejecting this. Maybe not sure."
     decision = _parse_decision_from_text(text)
@@ -175,7 +175,7 @@ def test_parse_decision_handles_low_confidence():
 
 def test_parse_decision_handles_unparseable_text():
     """Test fallback for unparseable text."""
-    from integrations.langchain import _parse_decision_from_text
+    from agent_tracer.integrations.langchain import _parse_decision_from_text
 
     text = "Random text without clear structure"
     decision = _parse_decision_from_text(text)

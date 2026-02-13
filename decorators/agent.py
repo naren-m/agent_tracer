@@ -2,9 +2,9 @@
 
 import functools
 from typing import Optional
-from agent_tracer import TraceClient
-from utils.fail_safe import FailSafeTraceClient
-from context.propagation import set_current_trace_id
+from agent_tracer.core.trace_client import TraceClient
+from agent_tracer.utils.fail_safe import FailSafeTraceClient
+from agent_tracer.context.propagation import set_current_trace_id
 
 
 def traced_agent(trace_client: TraceClient, fail_safe: bool = True):
@@ -32,7 +32,7 @@ def traced_agent(trace_client: TraceClient, fail_safe: bool = True):
             # If this is a LangGraph agent (has callbacks attribute), inject our callback
             if hasattr(self, 'callbacks') and isinstance(self.callbacks, list):
                 try:
-                    from integrations.langchain import ComprehensiveTracingCallback
+                    from agent_tracer.integrations.langchain import ComprehensiveTracingCallback
 
                     # Create callback instance with the trace client
                     callback = ComprehensiveTracingCallback(trace_client)

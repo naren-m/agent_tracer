@@ -41,7 +41,7 @@ async def test_traced_agent_creates_complete_trace(real_trace_client, storage_di
     assert trace_data["trace_id"] == trace_id
     assert trace_data["trace_type"] == "agent_execution"
     assert trace_data["status"] == "completed"
-    assert trace_data["trigger"]["type"] == "a2a_task"
+    assert trace_data["trigger"]["type"] == "agent_task"
     assert "TestAgent" in trace_data["metadata"]["agent"]
     
     # Verify spans exist

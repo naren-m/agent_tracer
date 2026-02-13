@@ -2,7 +2,7 @@
 
 import pytest
 from unittest.mock import Mock, MagicMock
-from utils.fail_safe import FailSafeTraceClient
+from agent_tracer.utils.fail_safe import FailSafeTraceClient
 
 
 class TestFailSafeTraceClient:

@@ -1,8 +1,8 @@
 """Decorator for tracing LLM calls with context capture."""
 
 import functools
-from agent_tracer import TraceClient
-from utils.fail_safe import FailSafeTraceClient
+from agent_tracer.core.trace_client import TraceClient
+from agent_tracer.utils.fail_safe import FailSafeTraceClient
 
 
 def traced_llm_call(trace_client: TraceClient, fail_safe: bool = True):

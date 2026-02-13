@@ -4,10 +4,15 @@ __all__ = []
 
 # LangChain integration (optional dependency)
 try:
-    from integrations.langchain import ComprehensiveTracingCallback
+    from agent_tracer.integrations.langchain import ComprehensiveTracingCallback
     __all__.append("ComprehensiveTracingCallback")
 except ImportError:
     ComprehensiveTracingCallback = None
 
-# Exporters are always available
-from integrations.exporters import *  # noqa: F401, F403
+# Exporters (optional dependency - requires requests)
+try:
+    from agent_tracer.integrations.exporters import ZipkinExporter, JaegerExporter
+    __all__.extend(["ZipkinExporter", "JaegerExporter"])
+except ImportError:
+    ZipkinExporter = None
+    JaegerExporter = None

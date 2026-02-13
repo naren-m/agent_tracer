@@ -2,7 +2,7 @@
 
 import functools
 from typing import Optional
-from agent_tracer import TraceClient
+from agent_tracer.core.trace_client import TraceClient
 
 
 def traced_function(trace_client: TraceClient, span_name: Optional[str] = None):

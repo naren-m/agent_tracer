@@ -1,8 +1,8 @@
-"""Agent Tracer - Generic tracing library for AI agent systems."""
+"""Agent Tracer - Universal tracing library for AI agent systems."""
 
 __version__ = "0.2.0"
 
-# Core schemas and client
+# Core schemas and client (v0.1.0 compatibility)
 from agent_tracer.core.schemas import (
     Trace,
     Span,
@@ -19,32 +19,31 @@ from agent_tracer.core.trace_client import TraceClient
 try:
     from agent_tracer.storage.storage_backend import TraceStorageBackend, TraceNotFoundError
 except ImportError:
-    # Storage backend may not be available if dependencies missing
     TraceStorageBackend = None
     TraceNotFoundError = None
 
-# Decorators
-from agent_tracer.decorators.agent_decorator import agent
-from agent_tracer.decorators.llm_decorators import traced_llm_call, traced_anthropic, traced_openai
-from agent_tracer.decorators.decision_decorator import traced_decision
-from agent_tracer.decorators.generic_decorators import traced
+# Decorators (v0.2.0)
+from agent_tracer.decorators import traced_agent, traced_llm_call, traced_function, traced_tool
 
-# Models
-from agent_tracer.models.decision_models import AgentDecision, DecisionCriteria, Alternative
+# Models (v0.2.0)
+from agent_tracer.models import AgentDecision, DecisionCriteria, LLMContext
 
-# Context management
-from agent_tracer.context.context_propagation import (
-    set_current_trace_id,
+# Context management (v0.2.0)
+from agent_tracer.context import (
+    LLMContextCaptureMixin,
     get_current_trace_id,
+    set_current_trace_id,
+    get_current_span,
+    push_span,
+    pop_span,
     get_span_stack,
 )
-from agent_tracer.context.context_capture import capture_context
 
-# Utilities
-from agent_tracer.utils.fail_safe import FailSafeTraceClient
+# Utilities (v0.2.0)
+from agent_tracer.utils import FailSafeTraceClient
 
 __all__ = [
-    # Core
+    # Core (v0.1.0)
     "Trace",
     "Span",
     "Step",
@@ -56,22 +55,23 @@ __all__ = [
     "TraceClient",
     "TraceStorageBackend",
     "TraceNotFoundError",
-    # Decorators
-    "agent",
+    # Decorators (v0.2.0)
+    "traced_agent",
     "traced_llm_call",
-    "traced_anthropic",
-    "traced_openai",
-    "traced_decision",
-    "traced",
-    # Models
+    "traced_function",
+    "traced_tool",
+    # Models (v0.2.0)
     "AgentDecision",
     "DecisionCriteria",
-    "Alternative",
-    # Context
-    "set_current_trace_id",
+    "LLMContext",
+    # Context (v0.2.0)
+    "LLMContextCaptureMixin",
     "get_current_trace_id",
+    "set_current_trace_id",
+    "get_current_span",
+    "push_span",
+    "pop_span",
     "get_span_stack",
-    "capture_context",
-    # Utilities
+    # Utilities (v0.2.0)
     "FailSafeTraceClient",
 ]

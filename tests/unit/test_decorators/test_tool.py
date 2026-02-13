@@ -2,7 +2,7 @@
 
 import pytest
 from unittest.mock import Mock, MagicMock
-from decorators.tool import traced_tool
+from agent_tracer.decorators.tool import traced_tool
 
 
 class TestTracedTool:

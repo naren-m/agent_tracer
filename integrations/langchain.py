@@ -11,10 +11,10 @@ import logging
 from langchain_core.callbacks import BaseCallbackHandler
 from langchain_core.outputs import LLMResult
 
-from agent_tracer import TraceClient
-from models.decision_models import AgentDecision, DecisionCriteria
-from utils.fail_safe import FailSafeTraceClient
-from context.context_propagation import set_current_trace_id
+from agent_tracer.core.trace_client import TraceClient
+from agent_tracer.models.decisions import AgentDecision, DecisionCriteria
+from agent_tracer.utils.fail_safe import FailSafeTraceClient
+from agent_tracer.context.propagation import set_current_trace_id
 
 # Module logger
 logger = logging.getLogger(__name__)

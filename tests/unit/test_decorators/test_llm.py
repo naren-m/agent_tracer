@@ -2,8 +2,8 @@
 
 import pytest
 from unittest.mock import Mock, MagicMock
-from decorators.llm import traced_llm_call
-from context.capture import LLMContextCaptureMixin
+from agent_tracer.decorators.llm import traced_llm_call
+from agent_tracer.context.capture import LLMContextCaptureMixin
 
 
 class AgentDecision:

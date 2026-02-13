@@ -2,7 +2,7 @@
 
 import pytest
 from contextvars import copy_context
-from context.propagation import (
+from agent_tracer.context.propagation import (
     get_current_trace_id,
     set_current_trace_id,
 )

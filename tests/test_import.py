@@ -13,7 +13,7 @@ def test_package_import():
 def test_version():
     """Test that version is defined and valid."""
     import agent_tracer
-    assert agent_tracer.__version__ == "0.1.0"
+    assert agent_tracer.__version__ == "0.2.0"
 
 
 def test_core_imports():
@@ -30,7 +30,6 @@ def test_core_imports():
         TraceClient,
     )
 
-    # Verify all classes are importable
     assert Trace is not None
     assert Span is not None
     assert Step is not None
@@ -54,11 +53,9 @@ def test_trace_client_class():
     """Test that TraceClient class is properly defined."""
     from agent_tracer import TraceClient
 
-    # Verify TraceClient is a class
     assert TraceClient is not None
     assert callable(TraceClient)
 
-    # Verify it has expected methods
     assert hasattr(TraceClient, 'start_trace')
     assert hasattr(TraceClient, 'complete_trace')
     assert hasattr(TraceClient, 'span')
