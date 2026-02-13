@@ -2,6 +2,9 @@
 
 import pytest
 from unittest.mock import MagicMock, patch
+
+langchain_core = pytest.importorskip("langchain_core", reason="langchain-core not installed")
+
 from agent_tracer.integrations.langchain import ComprehensiveTracingCallback
 from agent_tracer.models import AgentDecision
 from agent_tracer.context import get_current_trace_id, get_span_stack
