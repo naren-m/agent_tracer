@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-tracer"
-version = "0.1.0"
-description = "Universal tracing library for ANY AI agent system"
+version = "0.2.0"
+description = "Universal tracing library for AI agent systems with LLM integration, context management, and export capabilities"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -13,7 +13,7 @@ authors = [
     {name = "Agent Tracer Team"}
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
@@ -30,12 +30,39 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["agent_tracer", "agent_tracer.core", "agent_tracer.storage", "agent_tracer.models"]
+packages = [
+    "agent_tracer",
+    "agent_tracer.core",
+    "agent_tracer.storage",
+    "agent_tracer.models",
+    "agent_tracer.decorators",
+    "agent_tracer.context",
+    "agent_tracer.utils",
+    "agent_tracer.integrations",
+    "agent_tracer.integrations.exporters"
+]
 package-dir = {"agent_tracer" = "."}
 
 [project.optional-dependencies]
+llm = [
+    "anthropic>=0.18.0",
+    "openai>=1.0.0",
+]
+langchain = [
+    "langchain-core>=0.1.0",
+]
+exporters = [
+    "requests>=2.31.0",
+]
+all = [
+    "anthropic>=0.18.0",
+    "openai>=1.0.0",
+    "langchain-core>=0.1.0",
+    "requests>=2.31.0",
+]
 dev = [
     "pytest>=7.0.0",
+    "pytest-cov>=4.1.0",
     "rich>=13.7.0",
 ]
 
