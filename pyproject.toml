@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["agent_tracer", "agent_tracer.core", "agent_tracer.storage"]
+packages = ["agent_tracer", "agent_tracer.core", "agent_tracer.storage", "agent_tracer.models"]
 package-dir = {"agent_tracer" = "."}
 
 [project.optional-dependencies]
