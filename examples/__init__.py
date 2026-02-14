@@ -1,1 +1,1 @@
-"""Examples for a2a_traced package."""
+"""Examples for agent_tracer package."""

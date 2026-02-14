@@ -6,7 +6,7 @@ This example demonstrates:
 3. AgentDecision extraction with criteria and reasoning
 4. Fail-safe tracing (errors don't break the agent)
 
-Run with: python -m a2a_traced.examples.traced_agent_demo
+Run with: python -m agent_tracer.examples.traced_agent_demo
 """
 
 import asyncio
@@ -14,8 +14,8 @@ from pathlib import Path
 from agent_tracer import TraceClient
 from agent_tracer.storage import TraceStorageBackend
 from agent_tracer.decorators import traced_agent, traced_llm_call
-from agent_tracer.decision_models import AgentDecision, DecisionCriteria, LLMContext
-from agent_tracer.context_capture import LLMContextCaptureMixin
+from agent_tracer.models import AgentDecision, DecisionCriteria, LLMContext
+from agent_tracer.context import LLMContextCaptureMixin
 
 
 # Initialize tracer with file-based storage
@@ -122,7 +122,7 @@ class TaskPlannerAgent(LLMContextCaptureMixin):
 async def main():
     """Run the demo agent."""
     print("=" * 70)
-    print("A2A Traced Agent Demo")
+    print("Agent Tracer Demo")
     print("=" * 70)
 
     # Create agent instance

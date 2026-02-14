@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Decorator-based tracing: `@traced_agent`, `@traced_llm_call`, `@traced_function`, `@traced_tool` (merged from a2a-traced).
+- Decorator-based tracing: `@traced_agent`, `@traced_llm_call`, `@traced_function`, `@traced_tool`.
 - Decision models: `AgentDecision`, `DecisionCriteria`, `LLMContext` (Pydantic models for structured decision capture).
 - Context management: `LLMContextCaptureMixin` for capturing LLM context before calls.
 - Context propagation: async-safe trace ID propagation using `contextvars`.
@@ -24,14 +24,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package version bumped from 0.1.0 to 0.2.0.
 - Package description updated to reflect unified tracing capabilities.
 - Added `pytest-asyncio` to dev dependencies.
-
-### Deprecated
-
-- The separate `a2a-traced` package is deprecated. All functionality now lives in `agent-tracer`.
-
-### Migration
-
-- See [MIGRATION.md](MIGRATION.md) for detailed migration guide from `a2a-traced`.
 
 ## [0.1.0] - 2026-01-15
 

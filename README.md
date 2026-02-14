@@ -4,9 +4,7 @@ Universal tracing library for AI agent systems with LLM decision capture.
 
 **Version**: 0.2.0 | **Python**: >= 3.11 | **License**: MIT
 
-agent-tracer provides hierarchical tracing for any AI agent system -- RCA, monitoring, CI/CD, orchestration, or custom agents. It captures execution flows, LLM decisions with reasoning and criteria, and artifacts, storing everything in PostgreSQL and/or JSON files on disk.
-
-v0.2.0 merges the original `agent-tracer` core (v0.1.0) with the `a2a-traced` decorator library (v1.0.1) into a single unified package.
+agent-tracer provides hierarchical tracing for any AI agent system. It captures execution flows, LLM decisions with reasoning and criteria, and artifacts, storing everything in PostgreSQL and/or JSON files on disk.
 
 ---
 
@@ -48,14 +46,6 @@ pip install agent-tracer[all]         # All optional dependencies
 pip install -e ".[dev]"
 ```
 
-Or using Make:
-
-```bash
-make setup          # Create venv, install dependencies
-make install-dev    # Install with dev extras
-make test           # Run test suite
-```
-
 ---
 
 ## Quick Start
@@ -93,8 +83,8 @@ with client.span("analysis_phase", "agent_execution") as span:
     )
 
     client.add_decision(
-        name="root_cause_identified",
-        reasoning="Multiple error patterns converge on config drift",
+        name="action_selected",
+        reasoning="Multiple signals converge on the same action",
         criteria=["frequency", "impact", "correlation"],
         final_score=0.92
     )
@@ -505,9 +495,6 @@ CREATE TABLE agent_tracer_spans (
 
 ```bash
 # Run all tests
-make test
-
-# Or directly with pytest
 pytest -v
 
 # With coverage
@@ -526,7 +513,7 @@ Test configuration is in `pyproject.toml` under `[tool.pytest.ini_options]`.
 1. Fork the repository and create a feature branch.
 2. Install development dependencies: `pip install -e ".[dev]"`
 3. Write tests for any new functionality.
-4. Run the test suite: `make test`
+4. Run the test suite: `pytest -v`
 5. Submit a pull request.
 
 ### Code Style

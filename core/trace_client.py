@@ -32,7 +32,7 @@ def _require_active_span(span_stack: list) -> dict:
 
 
 class TraceClient:
-    """Generic trace client for any agent system (RCA, monitoring, CI/CD, etc.).
+    """Generic trace client for any agent system.
 
     Thread-safe: Each thread/async task maintains its own trace context using contextvars.
     """

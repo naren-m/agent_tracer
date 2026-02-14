@@ -1,5 +1,4 @@
 -- Generic Agent Tracer database schema for PostgreSQL
--- Works with ANY agent system (RCA, monitoring, CI/CD, orchestration, etc.)
 
 -- Traces table (generic)
 CREATE TABLE IF NOT EXISTS agent_tracer_traces (
@@ -64,13 +63,6 @@ CREATE INDEX IF NOT EXISTS idx_spans_type ON agent_tracer_spans(span_type);
 CREATE INDEX IF NOT EXISTS idx_spans_status ON agent_tracer_spans(status);
 CREATE INDEX IF NOT EXISTS idx_spans_agent_metadata ON agent_tracer_spans USING GIN(agent_metadata);
 
--- Example queries for different agent systems:
-
--- RCA system query:
+-- Example queries:
 -- SELECT * FROM agent_tracer_traces WHERE metadata->>'job_id' = 'auth-service';
-
--- Monitoring system query:
 -- SELECT * FROM agent_tracer_traces WHERE metadata->>'alert_name' = 'HighCPUUsage';
-
--- CI/CD system query:
--- SELECT * FROM agent_tracer_traces WHERE metadata->>'repo' = 'myorg/myrepo';
