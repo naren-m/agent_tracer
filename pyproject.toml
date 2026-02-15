@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agent-tracer"
-version = "0.2.0"
+version = "0.2.1"
 description = "Universal tracing library for AI agent systems with LLM integration, context management, and export capabilities"
 readme = "README.md"
 requires-python = ">=3.11"
