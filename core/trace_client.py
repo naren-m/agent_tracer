@@ -197,7 +197,7 @@ class TraceClient:
             "artifact_type": artifact_type,
             "content_type": "application/json" if is_structured else "text/plain",
             "metadata": metadata or {},
-            "created_at": _utc_now_iso(),
+            "created_at": utc_now_iso(),
         }
 
         if size_bytes < INLINE_ARTIFACT_MAX_BYTES:

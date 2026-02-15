@@ -18,7 +18,7 @@ from agent_tracer.decorators import traced_agent
 from examples.multi_agent.base_agent import BaseLangGraphAgent, MultiAgentState
 from agent_tracer import TraceClient
 from agent_tracer.storage import TraceStorageBackend
-from agent_tracer.exporters import ZipkinExporter
+from agent_tracer.integrations.exporters import ZipkinExporter
 
 
 # ==============================================================================

@@ -19,7 +19,7 @@ from pathlib import Path
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from agent_tracer.exporters import JaegerExporter
+from agent_tracer.integrations.exporters import JaegerExporter
 
 
 def main():
@@ -54,7 +54,7 @@ Examples:
     )
     parser.add_argument(
         "--service",
-        default="a2a-agent",
+        default="agent-tracer",
         help="Service name for Jaeger (default: a2a-agent)"
     )
     parser.add_argument(
